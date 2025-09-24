@@ -22,7 +22,7 @@ function App() {
         <div className="background-image"></div>
         <div className="backdrop-blur-sm bg-gray/50 h-250">
          <div className="landing_content">
-         <h1 className='text-white text-4xl'>Welcome To Paradise Nursery</h1>
+         <h1 className='text-white text-4xl'>Welcome To Mobile Legends</h1>
           <div className="divider"></div>
           <p>Where Green Meets Serenity</p>
          
