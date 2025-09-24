@@ -17,7 +17,7 @@ function ProductList({ onHomeClick }) {
                 {
                     name: "Snake Plant",
                     image: "https://cdn.pixabay.com/photo/2021/01/22/06/04/snake-plant-5939187_1280.jpg",
-                    description: "Produces oxygen at night, improving air quality.",
+                    description: "Releases oxygen at night",
                     cost: "$15"
                 },
                 {
@@ -41,13 +41,13 @@ function ProductList({ onHomeClick }) {
                 {
                     name: "Rubber Plant",
                     image: "https://cdn.pixabay.com/photo/2020/02/15/11/49/flower-4850729_1280.jpg",
-                    description: "Easy to care for and effective at removing toxins.",
+                    description: "Low-maintenance and toxin-removing.",
                     cost: "$17"
                 },
                 {
                     name: "Aloe Vera",
                     image: "https://cdn.pixabay.com/photo/2018/04/02/07/42/leaf-3283175_1280.jpg",
-                    description: "Purifies the air and has healing properties for skin.",
+                    description: "Cleans air and soothes skin.",
                     cost: "$14"
                 }
             ]
@@ -76,7 +76,7 @@ function ProductList({ onHomeClick }) {
                 {
                     name: "Mint",
                     image: "https://cdn.pixabay.com/photo/2016/01/07/18/16/mint-1126282_1280.jpg",
-                    description: "Refreshing aroma, used in teas and cooking.",
+                    description: "Provides a refreshing aroma, commonly used in teas and culinary dishes.",
                     cost: "$12"
                 },
                 {
@@ -117,7 +117,7 @@ function ProductList({ onHomeClick }) {
                 {
                     name: "Basil",
                     image: "https://cdn.pixabay.com/photo/2016/07/24/20/48/tulsi-1539181_1280.jpg",
-                    description: "Repels flies and mosquitoes, also used in cooking.",
+                    description: "Repels insects and adds flavor.",
                     cost: "$9"
                 },
                 {
@@ -218,18 +218,6 @@ function ProductList({ onHomeClick }) {
         }
     ];
 
-    const styleObjUl = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '1100px',
-    }
-    const styleA = {
-        color: 'white',
-        fontSize: '30px',
-        textDecoration: 'none',
-    }
-
     const handleHomeClick = (e) => {
         e.preventDefault();
         onHomeClick();
@@ -261,43 +249,44 @@ function ProductList({ onHomeClick }) {
 
     return (
         <div>
-            <div className="bg-[#4CAF50] text-[#fff] p-[15px] flex justify-between items-center text-[20px]">
-                <div className="tag">
-                    <div className="luxury">
-                        <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                        <a href="/" onClick={(e) => handleHomeClick(e)}>
-                            <div>
-                                <h3 style={{ color: 'white' }}>Paradise Nursery</h3>
-                                <i style={{ color: 'white' }}>Where Green Meets Serenity</i>
-                            </div>
-                        </a>
-                    </div>
+            <div className="bg-[#4CAF50] text-[#fff] p-[15px] flex justify-between items-center text-[20px] px-10 mb-10">
+                
+             <div className="flex cursor-pointer" onClick={(e) => handleHomeClick(e)}>
+                <img 
+                  src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" 
+                  alt="Logo"
+                  className='w-20 rounded-full' />
+                
+                  <div className='mt-3.5 ms-5'>
+                    <h3>Paradise Nursery</h3>
+                    <p className='text-sm italic text-gray-100'>Where Green Meets Serenity</p>
+                  </div>
+             </div>
 
-                </div>
-                <div style={styleObjUl}>
-                    <div> <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div> <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}><h1 className='cart'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68"><rect width="156" height="156" fill="none"></rect><circle cx="80" cy="216" r="12"></circle><circle cx="184" cy="216" r="12"></circle><path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="mainIconPathAttribute"></path></svg></h1></a></div>
-                </div>
+             <div className='flex gap-x-10 mt-4'>
+               <p className='bg-white text-[#4CAF50] px-5 py-1 rounded-sm font-bold cursor-pointer hover:opacity-85 transition-all duration-500'><a href="#" onClick={(e) => handlePlantsClick(e)}>Plants</a></p>
+               <a href="#" onClick={(e) => handleCartClick(e)}><i className="fa-solid fa-cart-shopping text-3xl hover:opacity-85 transition-all duration-500 align-middle"/></a>
+             </div>
             </div>
             {!showCart ? (
                 <div className="product-grid">
                     {plantsArray.map((category, index) => ( // Loop through each category in plantsArray
                         <div key={index}>
-                            <h1>{category.category}</h1>
+                            <h1 className='text-center text-3xl font-semibold'>{category.category}</h1>
                             <div className="product-list">
                             {category.plants.map((plant, plantIndex) => ( 
                                 <div className="product-card" key={plantIndex}> {/* Unique key for each plant card */}
                                 <img 
-                                    className="product-image" 
+                                    className="product-image mx-auto mb-5" 
                                     src={plant.image} // Display the plant image
                                     alt={plant.name} // Alt text for accessibility
                                 />
                                 <div className="product-title">{plant.name}</div> {/* Display plant name */}
                                 {/* Display other plant details like description and cost */}
-                                <div className="product-description">{plant.description}</div> {/* Display plant description */}
-                                <div className="product-cost">${plant.cost}</div> {/* Display plant cost */}
+                                <div className="product-description mb-3">{plant.description}</div> {/* Display plant description */}
+                                <div className="product-cost font-bold mb-4">{plant.cost}</div> {/* Display plant cost */}
                                 <button
-                                    className="product-button"
+                                    className="product-button rounded-sm"
                                     onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
                                 >
                                     Add to Cart

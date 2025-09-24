@@ -59,14 +59,13 @@ body {
     border-radius: 5px;
     text-align: center;
     position: relative;
-    
     gap: 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 /* Pseudo-classes - Hover effect on product button */
 .product-card:hover {
     transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
     z-index: 1;
 }
 
@@ -111,44 +110,7 @@ body {
     padding: 5px 10px;
     border-radius: 0 0 0 5px;
 }
-.tag_home_link{
-    display: flex;
-    /* background-color: red; */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 50px;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-}
-.tag_home_link h3{
-    font-size: 30px;
-}
-.tag a{
-    text-decoration: none;
-}
-.tag {
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.tag img {
-    height: 70px;
-    width: 70px;
-    border-radius: 70%;
-    
-}
-
-.luxury {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 650px;
-    font-size: 19px;
-}
 .cart{
     color: white;
     display: flex;
