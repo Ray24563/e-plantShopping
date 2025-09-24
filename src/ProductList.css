@@ -10,17 +10,6 @@ body {
     background-color: #f0f0f0;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #4CAF50;
-    color: #fff!important;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-}
-
 .navbar .ul {
     display: flex;
     justify-content: space-between;
