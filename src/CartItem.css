@@ -216,9 +216,7 @@
     font-size: 20px;
     font-weight: 900;
    }
-.continue_shopping_btn{
-  margin-top: -50px;
-}
+
    @media (max-width: 768px) {
     .cart-container {
       padding: 10px; /* Reduce padding */

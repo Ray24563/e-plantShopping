@@ -9,27 +9,36 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
- 
+    let total = 0;
+
+    cart.forEach((cartItem) => {
+      const quantity = cartItem.quantity
+      const cost = parseFloat(cartItem.cost.substring(1))
+      total += quantity * cost
+    })
+    return total;
   };
-
-  const handleContinueShopping = (e) => {
-   
-  };
-
-
 
   const handleIncrement = (item) => {
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
   };
 
   const handleDecrement = (item) => {
-   
+    if (item.quantity > 1){
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 }));
+    }
   };
 
   const handleRemove = (item) => {
+    dispatch(removeItem(item.name));
   };
 
-  // Calculate total cost based on quantity for an item
+  
   const calculateTotalCost = (item) => {
+    const itemCost = parseFloat(item.cost.substring(1))
+    const quantity = item.quantity
+
+    return itemCost * quantity
   };
 
   return (
@@ -54,10 +63,17 @@ const CartItem = ({ onContinueShopping }) => {
         ))}
       </div>
       <div style={{ marginTop: '20px', color: 'black' }} className='total_cart_amount'></div>
-      <div className="continue_shopping_btn">
-        <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
-        <br />
-        <button className="get-started-button1">Checkout</button>
+
+      <div className="flex justify-center flex-col gap-y-5 mb-5">
+
+        <button
+         className="py-3.5 bg-[#4caf50] text-white px-9 text-lg rounded-md hover:opacity-85 transition-all duration-400 cursor-pointer" 
+         onClick={(e) => onContinueShopping(e)}>
+          Continue Shopping
+        </button>
+  
+        <button className="py-3 bg-[#4caf50] text-white px-9 text-lg rounded-md hover:opacity-85 transition-all duration-400 cursor-pointer">Checkout</button>
+
       </div>
     </div>
   );
